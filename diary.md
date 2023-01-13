@@ -20,6 +20,9 @@ kalorien die vom sport abfallen dazurechnen
 #####
 Grafik die den Fortschritt darstellt
 #####
+Extras:
+#####
+Produkte die man gegessen hat auswählen
 
 
 ### Stand ende der 4 ten stunden :
