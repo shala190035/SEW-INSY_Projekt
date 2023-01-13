@@ -1,13 +1,12 @@
 # Ingenieurstagebuch
 ## Shala Urim
-## | 12.01.2023 | Laufend | ? |
+## | 12.01.2023 | Laufend | ? | 
 
+# Calorie-Tracker-Anwendung.
+Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbrauch aufzuzeichnen und zu verfolgen. 
 ### 12.01.2023 :
 
-### 14:05 - 17:35 
-
-# Fitness-Tracker-Anwendung.
-Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbrauch aufzuzeichnen und zu verfolgen. 
+### 14:05 - 17:35
 
 ### Ziel:
 
