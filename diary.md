@@ -12,11 +12,15 @@ Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbr
 ### Ziel:
 
 #### 5 wichtige funktionen:
-
-Gewünschte Kalorien hinzufügen /n
+#####
+Gewünschte Kalorien hinzufügen 
+#####
 Kalorien die gegessen werden vom sollwert abziehen
+#####
 kalorien die vom sport abfallen zum sollwert dazurechnen
+#####
 Grafik die den Fortschritt darstellt
+#####
 
 
 ### Stand ende der 4 ten stunden :
