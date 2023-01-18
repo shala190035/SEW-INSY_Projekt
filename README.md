@@ -1,2 +1,2 @@
 # SEW-INSY_Projekt
-Fitness-Tracker
+Calorie-Tracker
