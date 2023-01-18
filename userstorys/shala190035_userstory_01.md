@@ -11,8 +11,8 @@ Calorie amount
 The system adds the specified calorie amount to the user's account.
 
 ## Output
-Successful addition of calorie intake
-Failed addition of calorie intake
+* Successful addition of calorie intake
+* Failed addition of calorie intake
 
 ## Errors
 * Invalid calorie amount

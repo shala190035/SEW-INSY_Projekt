@@ -11,8 +11,8 @@ Calorie amount
 The system subtracts the specified calorie amount from the user's account.
 
 ## Output
-Successful subtraction of consumed calories
-Failed subtraction of consumed calories
+* Successful subtraction of consumed calories
+* Failed subtraction of consumed calories
 
 ## Errors
 * Invalid calorie amount

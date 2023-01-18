@@ -11,8 +11,8 @@ Username, password
 The system authenticates the user's credentials and logs them in.
 
 ## Output
-Successful login
-Failed login
+* Successful login
+* Failed login
 
 ## Errors
 * Incorrect username or password
