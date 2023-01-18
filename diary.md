@@ -10,19 +10,7 @@ Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbr
 
 ### Ziel:
 
-#### 5 wichtige funktionen:
-#####
-Gewünschte Kalorien für den tag hinzufügen 
-#####
-Kalorien die gegessen werden vom abziehen
-#####
-kalorien die vom sport abfallen dazurechnen
-#####
-Grafik die den Fortschritt darstellt
-#####
-Extras:
-#####
-Produkte die man gegessen hat auswählen
+userstorys
 
 
 ### Stand ende der 4 ten stunden :
