@@ -50,7 +50,6 @@ Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbr
 
 #### Erledigt:
 * Er- Diagramm 
-* Weitere Db Struktur programmieren
-
+* Weitere Db Struktur programmiert
 * Code soweit das man sich anmelden kann, für den user wird der eingegebene calorienwert gespeichert, bei erneut eingabe wird dieser geändert, und der aktuelle calorie wert wird als zahl ausgegeben(noch keine add/subtract funktion)
 
