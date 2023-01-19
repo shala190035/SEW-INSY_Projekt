@@ -1,0 +1,89 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-image: #f5f5f5;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+  font-size: 3.5rem;
+  }
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text{
+  height: 25px;
+  border-radius : 5px;
+  padding: 4px;
+  border: solid thin #aaa;
+  width:100%
+}
+.box{
+  background-color : grey;
+  margin: auto;
+  width: 300px;
+  padding: 20px;
+}
+.button{
+  padding: 10px;
+  width: 100px;
+  color: rgb(255, 255, 255);
+  background-color:linear-gradient(rgba(255, 255, 255, 0.4),rgba(55, 98, 167, 0.4));
+  border: none
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+  color:white;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="user"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin button[type="submit"]{
+  background-color:#0f4e66 ;
+  box-shadow:0 0 20px 9px#0f4d664b ;
+  border:none;
+}
