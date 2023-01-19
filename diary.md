@@ -32,3 +32,26 @@ userstorys (überarbeiten das sie so wie im projekt "Datacenter" sind)
 
 userstory 00-04 hinzugefügt
 
+### 18.01.2023 :
+
+### 14:05 - 17:35
+
+### Ziel:
+
+Er- Diagramm
+#
+
+Weitere Db Struktur programmieren
+
+#
+
+code anfangen
+### Stand ende der 4 ten stunden :
+### Erledigt:
+##
+Er- Diagramm 
+##
+Weitere Db Struktur programmieren
+#
+Code soweit das man sich anmelden kann, für den user wird der eingegebene calorienwert gespeichert, bei erneut eingabe wird dieser geändert, und der aktuelle calorie wert wird als zahl ausgegeben(noch keine add/subtract funktion)
+
