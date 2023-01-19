@@ -29,7 +29,7 @@ Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbr
 
 
 ### Stand ende der 4 ten stunden :
-#
+
 #### Erledigt:
 #
 * userstory 00-04 hinzugefügt
@@ -47,7 +47,6 @@ Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbr
 ### Stand ende der 4 ten stunden :
 #
 #### Erledigt:
-#
 * Er- Diagramm 
 * Weitere Db Struktur programmieren
 
