@@ -40,18 +40,14 @@ userstory 00-04 hinzugefügt
 
 Er- Diagramm
 #
-
-Weitere Db Struktur programmieren
-
+* Weitere Db Struktur programmieren
+* code anfangen
 #
-
-code anfangen
 ### Stand ende der 4 ten stunden :
 ### Erledigt:
-##
-Er- Diagramm 
-##
-Weitere Db Struktur programmieren
 #
-Code soweit das man sich anmelden kann, für den user wird der eingegebene calorienwert gespeichert, bei erneut eingabe wird dieser geändert, und der aktuelle calorie wert wird als zahl ausgegeben(noch keine add/subtract funktion)
+* Er- Diagramm 
+* Weitere Db Struktur programmieren
+
+* Code soweit das man sich anmelden kann, für den user wird der eingegebene calorienwert gespeichert, bei erneut eingabe wird dieser geändert, und der aktuelle calorie wert wird als zahl ausgegeben(noch keine add/subtract funktion)
 
