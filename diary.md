@@ -47,7 +47,7 @@ Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbr
 * code anfangen
 #
 ### Stand ende der 4 ten stunden :
-#
+
 #### Erledigt:
 * Er- Diagramm 
 * Weitere Db Struktur programmieren
