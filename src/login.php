@@ -65,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 <main class="form-signin">
     <form method="post">
-        <img class="mb-4 center" src="assets\brand\barcodescanner_logo.png" alt="logo" width="206" height="206">
+        <img class="mb-4 center" src="assets\brand\laufen.png" alt="logo" width="206" height="206">
 
         <div class="form-floating">
             
@@ -84,6 +84,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         <input  class="w-100 btn btn-lg btn-primary" id="button" type="submit"  value="Login"><br><br>
         <!--<a href="signup.php">Click to Signup</a><br><br> -->
     </form>
+    <a href="signup.php">Signup</a>
 </main>
   </body>
 </html>
