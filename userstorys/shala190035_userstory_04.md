@@ -1,5 +1,5 @@
 ## User Story: Register
-Register
+Register a user
 
 ## Actors
 * Person (Role: End User)
