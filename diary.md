@@ -10,12 +10,12 @@ Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbr
 
 ### Ziel:
 
-userstorys
+* userstorys
 
 
 ### Stand ende der 4 ten stunden :
 
-(noch nicht fertig)
+* (noch nicht fertig)
 
 #
 
@@ -25,26 +25,28 @@ userstorys
 
 ### Ziel:
 
-userstorys (überarbeiten das sie so wie im projekt "Datacenter" sind)
+* userstorys (überarbeiten das sie so wie im projekt "Datacenter" sind)
 
 
 ### Stand ende der 4 ten stunden :
-
-userstory 00-04 hinzugefügt
-
+#
+#### Erledigt:
+#
+* userstory 00-04 hinzugefügt
+#
 ### 18.01.2023 :
 
 ### 14:05 - 17:35
 
 ### Ziel:
-
-Er- Diagramm
 #
+* Er- Diagramm
 * Weitere Db Struktur programmieren
 * code anfangen
 #
 ### Stand ende der 4 ten stunden :
-### Erledigt:
+#
+#### Erledigt:
 #
 * Er- Diagramm 
 * Weitere Db Struktur programmieren
