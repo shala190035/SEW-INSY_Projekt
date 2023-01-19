@@ -18,6 +18,7 @@ Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbr
 * (noch nicht fertig)
 
 #
+#
 
 ### 18.01.2023 :
 
@@ -33,6 +34,7 @@ Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbr
 #### Erledigt:
 #
 * userstory 00-04 hinzugefügt
+#
 #
 ### 18.01.2023 :
 
