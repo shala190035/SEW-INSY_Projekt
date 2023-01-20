@@ -64,6 +64,8 @@ if(!empty($_POST['calorie'])) {
 $id = $_SESSION['id'];
 $query = "SELECT calorie FROM day_calorie WHERE user_id='$id'";
 $result = mysqli_query($con, $query);
+$query_history = "SELECT calorie, date_saved FROM saved_calorie WHERE user_id='$id'";
+$result_history = mysqli_query($con, $query_history);
 ?>
 
 <html>
@@ -78,10 +80,19 @@ $result = mysqli_query($con, $query);
     <button id="send-calorie">Send calorie</button>
     <button type="reset" id="reset-calorie">Reset</button>
     <div>
-        <h3>Calorie intake:</h3>
+        <h3>current Calorie intake:</h3>
         <?php
         while($row = mysqli_fetch_assoc($result)) {
             echo $row['calorie'] . "<br>";
+            echo $current_date = date("Y-m-d");
+        }
+        ?>
+    </div>
+    <div>
+        <h3>calorie history</h3>
+        <?php
+        while($row = mysqli_fetch_assoc($result_history)) {
+            echo $row['calorie'] . " - " . $row['date_saved'] . "<br>";
         }
         ?>
     </div>
@@ -117,10 +128,12 @@ docReady(function () {
         }else{
             alert("Please enter a value for calorie");
         }
+        location.reload();
     });
     $('#reset-calorie').click(function(){
         $('#calorie-input').val('');
     });
+    
 });
 
 </script>

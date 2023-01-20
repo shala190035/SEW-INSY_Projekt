@@ -53,3 +53,22 @@ Diese Anwendung könnte es Benutzern ermöglichen, ihre täglichen Kalorienverbr
 * Weitere Db Struktur programmiert
 * Code soweit das man sich anmelden kann, für den user wird der eingegebene calorienwert gespeichert, bei erneut eingabe wird dieser geändert, und der aktuelle calorie wert wird als zahl ausgegeben(noch keine add/subtract funktion)
 
+#
+#
+### 18.01.2023 :
+
+### 15:55 - 16:45
+
+### Ziel:
+
+* Calorien History
+* Hostory output
+
+
+### Stand ende der 4 ten stunden :
+
+#### Erledigt:
+#
+* Erledigt
+#
+#
