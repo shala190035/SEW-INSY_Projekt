@@ -105,30 +105,35 @@ if(isset($_POST['reset'])) {
 
 <html>
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Fitness-Tracker</title>
 </head>
 <body>
-    <div>
-        <label for="calorie-input">Enter calorie intake:</label>
-        <input type="number" id="calorie-input" name="calorie">
-    </div>
-    <button id="send-calorie">Send calorie</button>
+    
+    <form>
+        <div class="form-group">
+            <label for="calorie-input">Enter calorie intake:</label>
+            <input type="number" id="calorie-input" name="calorie">
+        </div>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-outline-dark" id="send-calorie">Send calorie</button>            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Second group">
+                <button type="button" class="btn btn-outline-dark" id="reset">reset</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sport-input">Enter calorie sport:</label>
+            <input type="number" id="sport-input" name="sport">
+        </div>
+        <button type="button" class="btn btn-outline-dark" id="send-sport">Send sport calorie</button>
 
-    <div>
-        <button id="reset">reset</button>
-    </div>
-    <div>
-        <label for="sport-input">Enter calorie sport:</label>
-        <input type="number" id="sport-input" name="sport">
-    </div>
-    <button id="send-sport">Send sport calorie</button>
-
-    <div>
-        <label for="food-input">Enter calorie food:</label>
-        <input type="number" id="food-input" name="food">
-    </div>
-    <button id="send-food">Send food calorie</button>
-
+        <div class="form-group">
+            <label for="food-input">Enter calorie food:</label>
+            <input type="number" id="food-input" name="food">
+        </div>
+        <button type="button" class="btn btn-outline-dark" id="send-food">Send food calorie</button>
+    </form>
     <div>
         <h3>current Calorie intake:</h3>
         <?php
@@ -139,17 +144,26 @@ if(isset($_POST['reset'])) {
         ?>
     </div>
     <div>
-        <h3>calorie history</h3>
-        <?php
-        while($row = mysqli_fetch_assoc($result_history)) {
-            echo $row['calorie'] . " - " . $row['date_saved'] . "<br>";
-        }
-        ?>
+        <p>
+            <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                history
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <?php
+                while($row = mysqli_fetch_assoc($result_history)) {
+                echo $row['calorie'] . " - " . $row['date_saved'] . "<br>";
+                }
+                ?>
+            </div>
+        </div>
     </div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>
 
 function docReady(fn) {
@@ -246,6 +260,7 @@ docReady(function () {
     <br>
     Hello, <?php echo $user_data['user_name']; ?>
     <a href="logout.php">logout</a>
+    <button type="button" class="btn btn-link">logout.php</button>
 </div>
 </head>
 </html>
