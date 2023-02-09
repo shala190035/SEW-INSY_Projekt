@@ -10,6 +10,8 @@ $query = "SELECT calorie FROM day_calorie WHERE user_id='$id'";
 $result = mysqli_query($con, $query);
 $query_history = "SELECT calorie, date_saved FROM saved_calorie WHERE user_id='$id'";
 $result_history = mysqli_query($con, $query_history);
+$query_food = "SELECT food_name, calorie FROM `food` WHERE 1";
+$result_food = mysqli_query($con, $query_food);
 
 if(isset($_POST['calorie'])){
     if(!empty($_POST['calorie'])) {
@@ -104,119 +106,147 @@ if(isset($_POST['reset'])) {
 
 
 <html>
-<head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Fitness-Tracker</title>
-</head>
-<body>
-    
-    <form>
-        <div class="form-group">
-            <label for="calorie-input">Enter calorie intake:</label>
-            <input type="number" id="calorie-input" name="calorie">
-        </div>
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-outline-dark" id="send-calorie">Send calorie</button>            </div>
-            <div class="btn-group mr-2" role="group" aria-label="Second group">
-                <button type="button" class="btn btn-outline-dark" id="reset">reset</button>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="sport-input">Enter calorie sport:</label>
-            <input type="number" id="sport-input" name="sport">
-        </div>
-        <button type="button" class="btn btn-outline-dark" id="send-sport">Send sport calorie</button>
 
-        <div class="form-group">
-            <label for="food-input">Enter calorie food:</label>
-            <input type="number" id="food-input" name="food">
-        </div>
-        <button type="button" class="btn btn-outline-dark" id="send-food">Send food calorie</button>
-    </form>
-    <div>
-        <h3>current Calorie intake:</h3>
-        <?php
-        while($row = mysqli_fetch_assoc($result)) {
-            echo $row['calorie'] . "<br>";
-            echo $current_date = date("Y-m-d");
-        }
-        ?>
-    </div>
-    <div>
-        <p>
-            <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                history
-            </button>
-        </p>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                <?php
-                while($row = mysqli_fetch_assoc($result_history)) {
-                echo $row['calorie'] . " - " . $row['date_saved'] . "<br>";
-                }
-                ?>
+<head>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="scan.css" rel="scan">
+</head>
+       
+
+<body style="background-image: url('assets/brand/backg2.jpg'); background-size: cover;"> 
+<div style="padding: 20px;">
+    <div class="interface" style="  width: 50%; background-color: white; border-radius: 20px; margin: 0 auto; padding: 20px;">
+
+        <h1 class="text-center">Calorie-Tracker</h3>
+        <form>
+            <div class="user">
+                Hello, <?php echo $user_data['user_name']; ?>
+            
+                <a href="logout.php" class="btn btn-outline-dark" role="button" data-bs-toggle="button">logout </a>
+
             </div>
-        </div>
-    </div>
+            
+                <div class="form-group">
+                    <label class="form-lable"  for="calorie-input">Enter calorie intake:</label>
+                    <input type="number" id="calorie-input" name="calorie" class="form-control"  placeholder="calories for the day">
+                    <div class="mx-auto">
+                        <button  type="button" class="btn btn-outline-dark w-100" id="send-calorie">Send calorie</button>            
+                        <button   type="button" class="btn btn-outline-dark w-100" id="reset">reset</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sport-input">Enter calorie sport:</label>
+                    <input type="number" id="sport-input" name="sport" class="form-control"  placeholder="calorie used">
+                    
+                    <button type="button" class="btn btn-outline-dark w-100" id="send-sport">Send sport calorie</button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="food-input"><h>food</h> </label>
+                    <input type="number" id="food-input" name="food" class="form-control"  placeholder="calorie take in">
+                    <p>
+                        <button class="btn btn-outline-dark w-100" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                            food choise
+                        </button>
+                    </p>                    
+                    <div class="collapse" id="collapseExample1">
+                        <div class="card card-body">
+                            <form>
+                                <!-- Add options from the database here -->
+                                <?php
+                                while($row = mysqli_fetch_array($result_food)) {
+                                    echo "<div class='form-check'>
+                                    <input type='radio' class='form-check-input' name='food_choice' value='" . $row['food_name'] . "," . $row['calorie'] . "'>
+                                    <label class='form-check-label'>" . $row['food_name'] . " - " . $row['calorie'] . "</label>
+                                        </div>";
+
+                                        
+                                }
+                                ?>
+                            </form>
+                            </div>
+                        </div>
+                    <button type="button" class="btn btn-outline-dark w-100" id="send-food">Send food calorie</button>
+                </div>
+                
+            <div class="text-black">
+                <h3>current Calorie intake:</h3>
+            </div>
+            <div >
+                <span class="text-black">
+                    <h3>
+                        <?php
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo $row['calorie'] . "<br>";
+                            //echo $current_date = date("Y-m-d");
+                        }
+                        ?>
+                    </h3>
+                </span>
+            </div>
+
+            <div>
+                <p>
+                    <button class="btn btn-outline-dark w-100" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        history
+                    </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <?php
+                        while($row = mysqli_fetch_assoc($result_history)) {
+                        echo $row['calorie'] . " - " . $row['date_saved'] . "<br>";
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        </form>    
+    </div> 
 </body>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
 
-function docReady(fn) {
-    if (document.readyState === "complete"
-        || document.readyState === "interactive") {
-        setTimeout(fn, 1);
-    } else {
-        document.addEventListener("DOMContentLoaded", fn);
-    }
-}
-
-docReady(function () {
-    $('#send-calorie').click(function() {
-        if($('#calorie-input').val() !== ""){
-            $.ajax({
-                url: 'http://localhost/fitness/index_test.php',
-                type: 'POST',
-                data: { calorie: $('#calorie-input').val() },
-                success: function(response) {
-                    console.log('The Ajax request was successful.');
-                },
-                error: function(error) {
-                    console.log('There was an error with the Ajax request:', error);
-                }
-            });
-        }else{
-            alert("Please enter a value for calorie");
+    function docReady(fn) {
+        if (document.readyState === "complete"
+            || document.readyState === "interactive") {
+            setTimeout(fn, 1);
+        } else {
+            document.addEventListener("DOMContentLoaded", fn);
         }
-        location.reload();
-    });
+    }
 
-    $('#reset').click(function() {
-        $.ajax({
-            url: 'http://localhost/fitness/index_test.php',
-            type: 'POST',
-            data: { reset: 0 },
-            success: function(response) {
-                console.log('The Ajax request was successful.');
-            },
-            error: function(error) {
-                console.log('There was an error with the Ajax request:', error);
+    docReady(function () {
+        $('#send-calorie').click(function() {
+            if($('#calorie-input').val() !== ""){
+                $.ajax({
+                    url: 'http://localhost/fitness/index_test.php',
+                    type: 'POST',
+                    data: { calorie: $('#calorie-input').val() },
+                    success: function(response) {
+                        console.log('The Ajax request was successful.');
+                    },
+                    error: function(error) {
+                        console.log('There was an error with the Ajax request:', error);
+                    }
+                });
+            }else{
+                alert("Please enter a value for calorie");
             }
+            location.reload();
         });
 
-        location.reload();
-    });
-
-    $('#send-sport').click(function() {
-        if($('#sport-input').val() !== ""){
+        $('#reset').click(function() {
             $.ajax({
                 url: 'http://localhost/fitness/index_test.php',
                 type: 'POST',
-                data: { sport: $('#sport-input').val() },
+                data: { reset: 0 },
                 success: function(response) {
                     console.log('The Ajax request was successful.');
                 },
@@ -224,43 +254,52 @@ docReady(function () {
                     console.log('There was an error with the Ajax request:', error);
                 }
             });
-        }else{
-            alert("Please enter a value for calorie");
-        }
-        location.reload();
+
+            location.reload();
+        });
+
+        $('#send-sport').click(function() {
+            if($('#sport-input').val() !== ""){
+                $.ajax({
+                    url: 'http://localhost/fitness/index_test.php',
+                    type: 'POST',
+                    data: { sport: $('#sport-input').val() },
+                    success: function(response) {
+                        console.log('The Ajax request was successful.');
+                    },
+                    error: function(error) {
+                        console.log('There was an error with the Ajax request:', error);
+                    }
+                });
+            }else{
+                alert("Please enter a value for calorie");
+            }
+            location.reload();
+        });
+
+        $('#send-food').click(function() {
+            if($('#food-input').val() !== ""){
+                $.ajax({
+                    url: 'http://localhost/fitness/index_test.php',
+                    type: 'POST',
+                    data: { food: $('#food-input').val() },
+                    success: function(response) {
+                        console.log('The Ajax request was successful.');
+                    },
+                    error: function(error) {
+                        console.log('There was an error with the Ajax request:', error);
+                    }
+                });
+            }else{
+                alert("Please enter a value for calorie");
+            }
+            location.reload();
+        });
+
+        
     });
 
-    $('#send-food').click(function() {
-        if($('#food-input').val() !== ""){
-            $.ajax({
-                url: 'http://localhost/fitness/index_test.php',
-                type: 'POST',
-                data: { food: $('#food-input').val() },
-                success: function(response) {
-                    console.log('The Ajax request was successful.');
-                },
-                error: function(error) {
-                    console.log('There was an error with the Ajax request:', error);
-                }
-            });
-        }else{
-            alert("Please enter a value for calorie");
-        }
-        location.reload();
-    });
-
-    
-});
-
-</script>
-
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-  </div>
-    <br>
-    Hello, <?php echo $user_data['user_name']; ?>
-    <a href="logout.php">logout</a>
-    <button type="button" class="btn btn-link">logout.php</button>
+    </script>
 </div>
-</head>
+</div>
 </html>
