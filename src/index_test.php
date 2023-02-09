@@ -12,6 +12,8 @@ $query_history = "SELECT calorie, date_saved FROM saved_calorie WHERE user_id='$
 $result_history = mysqli_query($con, $query_history);
 $query_food = "SELECT food_name, calorie FROM `food` WHERE 1";
 $result_food = mysqli_query($con, $query_food);
+$query_sport = "SELECT sport_name, calorie FROM `sport` WHERE 1";
+$result_sport = mysqli_query($con, $query_sport);
 
 if(isset($_POST['calorie'])){
     if(!empty($_POST['calorie'])) {
@@ -137,12 +139,30 @@ if(isset($_POST['reset'])) {
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="sport-input">Enter calorie sport:</label>
+                    <label for="sport-input">sport:</label>
                     <input type="number" id="sport-input" name="sport" class="form-control"  placeholder="calorie used">
-                    
-                    <button type="button" class="btn btn-outline-dark w-100" id="send-sport">Send sport calorie</button>
+                    <p>
+                        <button class="btn btn-outline-dark w-100" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                            sport choise
+                        </button>
+                    </p>   
+                    <div class="collapse" id="collapseExample2">
+                    <div class="card card-body">
+                        <form>
+                            <!-- Add options from the database here -->
+                            <?php
+                            while($row = mysqli_fetch_array($result_sport)) {
+                                echo "<div class='form-check'>
+                                    <input type='checkbox' class='sport-checkbox' data-calorie='" . $row['calorie'] . "'>
+                                    <label class='form-check-label'>" . $row['sport_name'] . " - " . $row['calorie'] . "</label>
+                                </div>";
+                            }
+                            ?>
+                        </form>
+                    </div>
                 </div>
-                
+                <button type="button" class="btn btn-outline-dark w-100" id="send-sport">Send sport calorie</button>
+
                 <div class="form-group">
                     <label for="food-input"><h>food</h> </label>
                     <input type="number" id="food-input" name="food" class="form-control"  placeholder="calorie take in">
@@ -152,25 +172,22 @@ if(isset($_POST['reset'])) {
                         </button>
                     </p>                    
                     <div class="collapse" id="collapseExample1">
-                        <div class="card card-body">
-                            <form>
-                                <!-- Add options from the database here -->
-                                <?php
-                                while($row = mysqli_fetch_array($result_food)) {
-                                    echo "<div class='form-check'>
-                                    <input type='radio' class='form-check-input' name='food_choice' value='" . $row['food_name'] . "," . $row['calorie'] . "'>
-                                    <label class='form-check-label'>" . $row['food_name'] . " - " . $row['calorie'] . "</label>
-                                        </div>";
-
-                                        
-                                }
-                                ?>
-                            </form>
-                            </div>
-                        </div>
-                    <button type="button" class="btn btn-outline-dark w-100" id="send-food">Send food calorie</button>
+                    <div class="card card-body">
+                    <form>
+                        <!-- Add options from the database here -->
+                        <?php
+                        while($row = mysqli_fetch_array($result_food)) {
+                        echo "<div class='form-check'>
+                            <input type='checkbox' class='food-checkbox' data-calorie='" . $row['calorie'] . "'>
+                            <label class='form-check-label'>" . $row['food_name'] . " - " . $row['calorie'] . "</label>
+                        </div>";
+                        }
+                        ?>
+                    </form>
+                    </div>
                 </div>
-                
+                <button type="button" class="btn btn-outline-dark w-100" id="send-food">Send food calorie</button>
+
             <div class="text-black">
                 <h3>current Calorie intake:</h3>
             </div>
@@ -184,9 +201,11 @@ if(isset($_POST['reset'])) {
                         }
                         ?>
                     </h3>
+                    <div id="calorie-display"></div>
                 </span>
             </div>
 
+            
             <div>
                 <p>
                     <button class="btn btn-outline-dark w-100" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -259,11 +278,20 @@ if(isset($_POST['reset'])) {
         });
 
         $('#send-sport').click(function() {
-            if($('#sport-input').val() !== ""){
+            let selectedCalorie = $('#sport-input').val();
+
+            $(".sport-checkbox").each(function() {
+                if ($(this).is(":checked")) {
+                    selectedCalorie = $(this).data("calorie");
+                    return false; // break the loop
+                }
+            });
+
+            if (selectedCalorie !== "") {
                 $.ajax({
                     url: 'http://localhost/fitness/index_test.php',
                     type: 'POST',
-                    data: { sport: $('#sport-input').val() },
+                    data: { sport: selectedCalorie },
                     success: function(response) {
                         console.log('The Ajax request was successful.');
                     },
@@ -271,18 +299,28 @@ if(isset($_POST['reset'])) {
                         console.log('There was an error with the Ajax request:', error);
                     }
                 });
-            }else{
-                alert("Please enter a value for calorie");
+            } else {
+                alert("Please enter a value for calorie or select a sport item");
             }
             location.reload();
         });
 
+
         $('#send-food').click(function() {
-            if($('#food-input').val() !== ""){
+            let selectedCalorie = $('#food-input').val();
+
+            $(".food-checkbox").each(function() {
+                if ($(this).is(":checked")) {
+                    selectedCalorie = $(this).data("calorie");
+                    return false; // break the loop
+                }
+            });
+
+            if (selectedCalorie !== "") {
                 $.ajax({
                     url: 'http://localhost/fitness/index_test.php',
                     type: 'POST',
-                    data: { food: $('#food-input').val() },
+                    data: { food: selectedCalorie },
                     success: function(response) {
                         console.log('The Ajax request was successful.');
                     },
@@ -290,11 +328,15 @@ if(isset($_POST['reset'])) {
                         console.log('There was an error with the Ajax request:', error);
                     }
                 });
-            }else{
-                alert("Please enter a value for calorie");
+            } else {
+                alert("Please enter a value for calorie or select a food item");
             }
+
             location.reload();
         });
+
+
+
 
         
     });
